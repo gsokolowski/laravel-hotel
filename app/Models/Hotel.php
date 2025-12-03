@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class City extends Model
+class Hotel extends Model
 {
-    /** @use HasFactory<\Database\Factories\CityFactory> */
+    /** @use HasFactory<\Database\Factories\HotelFactory> */
     use HasFactory;
-    
-    public function country(): BelongsTo
+
+    public function city(): BelongsTo
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo(City::class);
     }
 
-    public function hotels(): HasMany
+    public function rooms(): HasMany
     {
-        return $this->hasMany(Hotel::class);
+        return $this->hasMany(Room::class);
     }
 }
