@@ -23,12 +23,12 @@ class CountrySeeder extends Seeder
                     ->count(rand(3, 10))
                     ->for($country)
                     ->create()
-                    ->each(function ($city) { // Also fro reach City create 1 to 4 hotels
+                    ->each(function ($city) { // Also for reach City create 1 to 4 hotels
                         Hotel::factory()
                             ->count(rand(1, 4))
                             ->for($city)
                             ->create()
-                            ->each(function ($hotel) {
+                            ->each(function ($hotel) { // also for each hotel seed rooms table
                                 Room::factory()
                                 ->count(rand(1, 4))
                                 ->for($hotel)
