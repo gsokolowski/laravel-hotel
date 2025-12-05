@@ -22,7 +22,7 @@ class Room extends Model
         return $this->belongsTo(RoomType::class);
     }
 
-    // room belongs to many reservations
+    // room belongs to many reservations through pivot table reservations_rooms
     public function reservations(): BelongsToMany
     {
         return $this->belongsToMany(Reservation::class);
