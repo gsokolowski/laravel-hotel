@@ -12,6 +12,14 @@ class Room extends Model
     /** @use HasFactory<\Database\Factories\RoomFactory> */
     use HasFactory;
 
+
+    protected $guarded = []; // allow all fields to be mass assigned
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('name', 'like', '%' . $search . '%');
+    }
+
     public function hotel(): BelongsTo
     {
         return $this->belongsTo(Hotel::class);
