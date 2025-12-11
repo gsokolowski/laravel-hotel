@@ -15,9 +15,19 @@ class Room extends Model
 
     protected $guarded = []; // allow all fields to be mass assigned
 
-    public function scopeSearch($query, $search)
+    protected $fillable = ['name', 'hotel_id', 'room_type_id'];
+    protected $hidden = ['created_at', 'updated_at'];
+    
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    protected $appends = ['room_type_name'];
+
+    public function getRoomTypeNameAttribute()
     {
-        return $query->where('name', 'like', '%' . $search . '%');
+        return $this->roomType->name;
     }
 
     public function hotel(): BelongsTo
